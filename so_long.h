@@ -6,7 +6,7 @@
 /*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:23:45 by wboutzou          #+#    #+#             */
-/*   Updated: 2022/06/20 20:10:22 by wboutzou         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:16:33 by wboutzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ struct so_long{
    int exit;
    int start;
    int coll;
+   void	*mlx;
+   void	*mlx_win;
+   void *e;
+   void *p;
+   void *c;
+   void *o;
+   void *wall;
+   int size;
 };
 typedef struct so_long t_game;
 
@@ -37,5 +45,7 @@ char	*ft_strcpy(char *dest, char *src);
 char	**ft_split(char const *s, char c);
 char	*ft_strldup(const char *s1, int len);
 int	    checkarg(int argc, char *argv);
-char *ft_strjoin(char *s1, char *s2);
+char  *ft_strjoin(char *s1, char *s2);
+void matrix(int fd,t_game *game);
+int checker_map(t_game *game);
 #endif

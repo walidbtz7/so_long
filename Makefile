@@ -1,6 +1,8 @@
-SRCS    		= helpers.c get_next_line.c checker_map.c
+SRCS    		= helpers.c get_next_line.c checker_map.c so_long.c
 
 FLAGS 			=	-Wall -Wextra -Werror 
+
+MLX				= 	-lmlx -framework OpenGL -framework AppKit
 OBJS			=    $(SRCS:.c=.o)
 
 NAME    		=    so_long
@@ -14,7 +16,7 @@ LIBFT    		=    ./libft/libft.a
 all: $(NAME)
 
 $(NAME):  $(LIBFT)  $(PRINTF) $(OBJS)
-	cc $(FLAGS) $(OBJS) $(LIBFT)  $(PRINTF) -o $(NAME)
+	cc $(FLAGS) $(OBJS) $(MLX) $(LIBFT)  $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft

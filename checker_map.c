@@ -6,7 +6,7 @@
 /*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:33:07 by wboutzou          #+#    #+#             */
-/*   Updated: 2022/06/20 22:43:19 by wboutzou         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:15:30 by wboutzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int checkarg(int argc, char *argv)
 	
 	return (0);
 }
+
 int check_wall(t_game	*game)
 {
 	int i;
@@ -62,6 +63,7 @@ int check_wall(t_game	*game)
 	}
 	return (1);
 }
+
 int checkalpha(t_game *game)
 {
 	int	i;
@@ -93,6 +95,7 @@ int checkalpha(t_game *game)
 		return (0);
 	return (1);
 }
+
 int check_size(t_game	*game)
 {
 	int	i;
@@ -110,6 +113,7 @@ int check_size(t_game	*game)
 	game->height = i;
 	return (1);
 }
+
 int checker_map(t_game *game)
 {
 	if(!check_size(game) || !check_wall(game))
@@ -118,6 +122,7 @@ int checker_map(t_game *game)
 		return (0);
 	return (1);
 }
+
 int	check_read(char *read)
 {
 	int	i;
@@ -153,25 +158,4 @@ void matrix(int fd,t_game *game)
     game->map = ft_split(read,'\n');
 	if(game->map == NULL)
 		return ;
-}
-
-int main(int argc, char **argv)
-{
-	int fd;
-	int i;
-	t_game game;
-
-	i = 0;
-	fd = checkarg(argc, argv[1]);
-	if (fd == 0)
-		return (0);
-	matrix(fd,&game);
-	if(game.map == NULL)
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
-	if(!checker_map(&game))
-		ft_printf("Error\n");
-	return (0);
 }
