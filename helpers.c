@@ -6,7 +6,7 @@
 /*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:23:36 by wboutzou          #+#    #+#             */
-/*   Updated: 2022/06/25 21:24:39 by wboutzou         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:29:34 by wboutzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (p);
 }
 
-char *ft_strldup(const char *s1, int len)
+char	*ft_strldup(const char *s1, int len)
 {
 	char	*p;
 	int		i;

@@ -6,11 +6,11 @@
 #    By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 21:23:23 by wboutzou          #+#    #+#              #
-#    Updated: 2022/06/25 21:23:27 by wboutzou         ###   ########.fr        #
+#    Updated: 2022/06/25 21:38:54 by wboutzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    		= helpers.c get_next_line.c checker_map.c graphic.c so_long.c
+SRCS    		= helpers.c get_next_line.c checker_helper.c checker_map.c graphic.c so_long.c
 
 FLAGS 			=	-Wall -Wextra -Werror 
 

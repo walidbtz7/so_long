@@ -6,13 +6,36 @@
 /*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 19:16:20 by wboutzou          #+#    #+#             */
-/*   Updated: 2022/06/25 21:12:10 by wboutzou         ###   ########.fr       */
+/*   Updated: 2022/06/26 00:34:58 by wboutzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void render(t_game *game)
+void	draw(t_game	*game, int i, int j)
+{
+	if (game->map[i][j] == '1')
+		mlx_put_image_to_window(game->mlx \
+		, game->mlx_win, game->wall, j * 50, i * 50);
+	else if (game->map[i][j] == '0')
+		mlx_put_image_to_window(game->mlx \
+		, game->mlx_win, game->o, j * 50, i * 50);
+	else if (game->map[i][j] == 'P')
+	{
+		mlx_put_image_to_window(game->mlx \
+		, game->mlx_win, game->p, j * 50, i * 50);
+		game->pos.player_y = i;
+		game->pos.player_x = j;
+	}
+	else if (game->map[i][j] == 'E')
+		mlx_put_image_to_window(game->mlx \
+		, game->mlx_win, game->e, j * 50, i * 50);
+	else if (game->map[i][j] == 'C')
+		mlx_put_image_to_window(game->mlx \
+		, game->mlx_win, game->c, j * 50, i * 50);
+}
+
+void	render(t_game *game)
 {
 	int	i;
 	int	j;
@@ -24,68 +47,21 @@ void render(t_game *game)
 		j = 0;
 		while (j < game->width)
 		{
-			if (game->map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx \
-				, game->mlx_win, game->wall, j * 50, i * 50);
-			else if (game->map[i][j] == '0')
-				mlx_put_image_to_window(game->mlx \
-				, game->mlx_win, game->o, j * 50, i * 50);
-			else if (game->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(game->mlx \
-				, game->mlx_win, game->p, j * 50, i * 50);
-				game->pos.player_y = i;
-				game->pos.player_x = j;
-			}
-			else if (game->map[i][j] == 'E')
-				mlx_put_image_to_window(game->mlx \
-				, game->mlx_win, game->e, j * 50, i * 50);
-			else if (game->map[i][j] == 'C')
-				mlx_put_image_to_window(game->mlx \
-				, game->mlx_win, game->c, j * 50, i * 50);
+			draw(game, i, j);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	switch_pos(t_game *game, int step_y, int step_x)
+void	move(t_game *game, int step_y, int step_x)
 {
-	int		x;
-	int		y;
-	char	tmp;
-
-	x = game->pos.player_x;
-	y = game->pos.player_y;
-	game->count.moves++;
-	if (game->map[y + step_y][x + step_x] != '1')
+	if (game->map[game->pos.player_y + step_y] \
+	[game->pos.player_x + step_x] != '1')
 	{
-		if (game->map[y + step_y][x + step_x] == 'C')
-		{
-			tmp = game->map[y + step_y][x + step_x];
-			game->map[y + step_y][x + step_x] = game->map[y][x];
-			game->map[y][x] = '0';
-			game->count.coll--;
-			ft_printf("%d\n",game->count.moves);
-		}
-		else if (game->map[y + step_y][x + step_x] == 'E')
-		{
-			if (game->count.coll < 0)
-			{
-				ft_printf("%d\n", game->count.moves);
-				exit(1);
-			}
-		}
-		else
-		{
-			tmp = game->map[y + step_y][x + step_x];
-			game->map[y + step_y][x + step_x] = game->map[y][x];
-			game->map[y][x] = tmp;
-			ft_printf("%d\n",game->count.moves);
-		}
-		game->pos.player_x = x + step_x;
-		game->pos.player_y = y + step_y;
-		game->count.moves++;
+		check_move(game, step_y, step_x);
+		game->pos.player_x = game->pos.player_x + step_x;
+		game->pos.player_y = game->pos.player_y + step_y;
 	}
 }
 
@@ -94,13 +70,13 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 53 || keycode < 0)
 		exit(1);
 	else if (keycode == 13)
-		switch_pos(game, -1, 0);
+		move(game, -1, 0);
 	else if (keycode == 1)
-		switch_pos(game, 1, 0);
+		move(game, 1, 0);
 	else if (keycode == 0)
-		switch_pos(game, 0, -1);
+		move(game, 0, -1);
 	else if (keycode == 2)
-		switch_pos(game, 0, 1);
+		move(game, 0, 1);
 	render(game);
 	return (0);
 }

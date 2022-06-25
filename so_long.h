@@ -6,7 +6,7 @@
 /*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:23:45 by wboutzou          #+#    #+#             */
-/*   Updated: 2022/06/25 21:23:08 by wboutzou         ###   ########.fr       */
+/*   Updated: 2022/06/25 22:08:49 by wboutzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct s_o_long{
 	void		*wall;
 	t_count		count;
 	t_pos		pos;
+	int			tmp;
 };
 typedef struct s_o_long	t_game;
 
@@ -64,4 +65,9 @@ void	render(t_game *game);
 int		checker_map(t_game *game);
 int		key_hook(int keycode, t_game *game);
 void	switch_pos(t_game *game, int step_y, int step_x);
+int		check_wall(t_game	*game);
+int		checkalpha(t_game *game);
+int		check_read(char *read);
+int		check_size(t_game	*game);
+void	check_move(t_game *game, int step_y, int step_x);
 #endif
