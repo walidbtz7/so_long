@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/25 21:23:36 by wboutzou          #+#    #+#             */
+/*   Updated: 2022/06/25 21:24:39 by wboutzou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *p;
-	int a, b;
+	int		i;
+	int		j;
+	char	*p;
+	int		a;
+	int		b;
 
 	j = 0;
 	if (!s1 && !s2)
-		return 0;
+		return (0);
 	if (!s1)
 		s1 = ft_strldup("", 0);
 	a = ft_strlen(s1);
@@ -38,8 +51,8 @@ char *ft_strjoin(char *s1, char *s2)
 
 char *ft_strldup(const char *s1, int len)
 {
-	char *p;
-	int i;
+	char	*p;
+	int		i;
 
 	if (!s1)
 		return (0);

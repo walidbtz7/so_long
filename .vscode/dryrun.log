@@ -1,0 +1,12 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/wboutzou/Desktop/so_long'
+make -C libft
+make -C ft_printf
+cc -Wall -Wextra -Werror  -c helpers.c -o helpers.o
+cc -Wall -Wextra -Werror  -c get_next_line.c -o get_next_line.o
+cc -Wall -Wextra -Werror  -c checker_map.c -o checker_map.o
+cc -Wall -Wextra -Werror  -c graphic.c -o graphic.o
+cc -Wall -Wextra -Werror  -c so_long.c -o so_long.o
+cc -g -Wall -Wextra -Werror  helpers.o get_next_line.o checker_map.o graphic.o so_long.o -lmlx -framework OpenGL -framework AppKit ./libft/libft.a  ./ft_printf/libftprintf.a -o so_long
+make: Leaving directory `/Users/wboutzou/Desktop/so_long'
+ 

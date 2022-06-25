@@ -1,4 +1,16 @@
-SRCS    		= helpers.c get_next_line.c checker_map.c so_long.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: wboutzou <wboutzou@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/25 21:23:23 by wboutzou          #+#    #+#              #
+#    Updated: 2022/06/25 21:23:27 by wboutzou         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS    		= helpers.c get_next_line.c checker_map.c graphic.c so_long.c
 
 FLAGS 			=	-Wall -Wextra -Werror 
 
@@ -16,7 +28,7 @@ LIBFT    		=    ./libft/libft.a
 all: $(NAME)
 
 $(NAME):  $(LIBFT)  $(PRINTF) $(OBJS)
-	cc $(FLAGS) $(OBJS) $(MLX) $(LIBFT)  $(PRINTF) -o $(NAME)
+	cc -g $(FLAGS) $(OBJS) $(MLX) $(LIBFT)  $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft
